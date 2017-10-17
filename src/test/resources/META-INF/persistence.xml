@@ -1,0 +1,25 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="hermesDataStoreTest" transaction-type="RESOURCE_LOCAL"> <!-- or transaction-type="JTA" -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.hermesecs.jpatraining.domain.Collaborator</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:h2:mem:db;DB_CLOSE_ON_EXIT=FALSE"/>
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="sa"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <!--
+                * validate      : validate the schema, makes no changes to the database.
+                * update        : update the schema.
+                * create        : creates the schema, destroying previous data.
+                * create-drop   : drop the schema at the end of the session.
+            -->
+        </properties>
+    </persistence-unit>
+</persistence>
